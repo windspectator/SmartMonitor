@@ -146,23 +146,7 @@ public class ActivityMain extends Activity {
             };
             mThread.start();
         }
-    }/*, drawRunnableGraphic = new Runnable() {
-		@Override
-		public void run() {
-			Canvas canvas;
-			Thread thisThread = Thread.currentThread();
-			while (drawThread == thisThread) {
-				canvas = mVG.lockCanvas();
-				mVG.onDrawCustomised(canvas);
-				mVG.unlockCanvasAndPost(canvas);
-				try {
-					Thread.sleep(intervalUpdate);
-				} catch (InterruptedException e) {
-					break;
-				}
-			}
-		}
-	}*/;
+    };
 
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         @SuppressLint("NewApi")
@@ -179,7 +163,6 @@ public class ActivityMain extends Activity {
 
             switchParameter(cpuTotal, mLCPUTotal);
             switchParameter(cpuAM, mLCPUAM);
-
             switchParameter(memUsed, mLMemUsed);
             switchParameter(memAvailable, mLMemAvailable);
             switchParameter(memFree, mLMemFree);
@@ -531,7 +514,7 @@ public class ActivityMain extends Activity {
         mLGraphicSurface.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showSettings();
+                //showSettings();
             }
         });
         mLGraphicSurface.setOnLongClickListener(new View.OnLongClickListener() {
@@ -735,7 +718,7 @@ public class ActivityMain extends Activity {
         mCloseSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hideSettings();
+                //hideSettings();
 
                 int intervalWidth = 0, intervalRead = 0, intervalUpdate = 0;
 
@@ -870,7 +853,7 @@ public class ActivityMain extends Activity {
         long time = Calendar.getInstance(TimeZone.getTimeZone(C.europeLondon)).getTimeInMillis();
 
 //		if (true) {
-        if (((float) (time - mPrefs.getLong(C.welcomeDate, 1)) / (24 * 60 * 60 * 1000) > 4
+        /*if (((float) (time - mPrefs.getLong(C.welcomeDate, 1)) / (24 * 60 * 60 * 1000) > 4
                 && mPrefs.getBoolean(C.feedbackFirstTime, true))
                 || ((float) (time - mPrefs.getLong(C.welcomeDate, 1)) / (24 * 60 * 60 * 1000) > 90)
                 && !mPrefs.getBoolean(C.feedbackDone, false)) {
@@ -884,27 +867,7 @@ public class ActivityMain extends Activity {
                     bottomMargin = navigationBarHeight;
                 ((FrameLayout.LayoutParams) mLFeedback.getLayoutParams()).setMargins(0, 0, 0, (int)(35*sD) + bottomMargin);
 
-                /*(mLFeedback.findViewById(R.id.BFeedbackYes)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mPrefs.edit().putBoolean(C.feedbackDone, true).commit();
-                        try {
-                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(C.marketDetails + getPackageName()))
-                                    .addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET | Intent.FLAG_ACTIVITY_MULTIPLE_TASK));
-                        } catch (ActivityNotFoundException e) {
-                            e.printStackTrace();
-                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(res.getString(R.string.google_play_app_site)))
-                                    .addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET | Intent.FLAG_ACTIVITY_MULTIPLE_TASK));
-                        }
-                        mLFeedback.animate().setDuration(animDuration).setListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                ((ViewManager) mLFeedback.getParent()).removeView(mLFeedback);
-                                mLFeedback = null;
-                            }
-                        }).setStartDelay(0).alpha(0).translationYBy(-15*sD);
-                    }
-                });*/
+
                 (mLFeedback.findViewById(R.id.BFeedbackDone)).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -942,7 +905,7 @@ public class ActivityMain extends Activity {
                 }
                 mLFeedback.animate().setStartDelay(delayDur).setDuration(animDur).alpha(1).translationYBy(15*sD);
             }
-        }
+        }*/
     }
 
 
